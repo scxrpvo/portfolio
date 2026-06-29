@@ -76,3 +76,143 @@ img{max-width:100%}
   .footer-grid { flex-direction:column; align-items:flex-start; gap:8px; }
 }
 
+
+/* ============================================================
+   SECTION STAGE — compte rendu de stage (ajout)
+   Réutilise la palette existante + accent "archives" (or) & vert.
+   ============================================================ */
+:root{
+  --archive:#e0a13f; --archive-bg:#241a0d; --archive-bd:#5a431d;
+  --green:#34d399; --green-bg:#0f2a20; --line:#1f2937;
+}
+.eyebrow{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.lead{color:var(--sub);max-width:64ch;margin:6px 0 22px}
+#stage h3{margin:0 0 .3em;font-size:1.05rem}
+
+/* entête contexte */
+.stage-head{display:grid;grid-template-columns:1.4fr 1fr;gap:20px;margin-top:22px}
+.org-tag{display:inline-block;font-size:.78rem;font-weight:700;color:var(--archive);background:var(--archive-bg);border:1px solid var(--archive-bd);padding:4px 12px;border-radius:999px;margin-bottom:10px}
+.stage-meta{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:9px}
+.stage-meta li{display:flex;gap:10px;color:var(--sub);font-size:.92rem}
+.stage-meta .k{min-width:92px;color:var(--text);font-weight:600}
+
+/* chiffres clés */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.stat{background:#0b1530;border:1px solid var(--line);border-radius:14px;padding:14px;text-align:center}
+.stat .num{font-size:1.6rem;font-weight:700;letter-spacing:-.02em;color:var(--ring)}
+.stat .lab{font-size:.72rem;color:var(--sub);line-height:1.35;margin-top:2px}
+
+/* timeline : libellés de période (améliore aussi le Parcours) */
+.timeline .time{font-size:.78rem;font-weight:700;color:var(--accent);letter-spacing:.02em}
+.timeline .content{margin-top:2px}
+
+/* carte métier (élément signature) */
+.metier{background:var(--archive-bg);border:1px solid var(--archive-bd);border-radius:16px;padding:22px;margin-top:8px}
+.metier > h3{color:var(--archive)}
+.metier .duo{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.metier .item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
+.metier .item .lbl{font-weight:600;font-size:.92rem;margin-bottom:5px;display:flex;align-items:center;gap:8px}
+.metier .item p{margin:0;color:var(--sub);font-size:.85rem}
+.pill{font-size:.64rem;font-weight:700;padding:2px 8px;border-radius:999px;letter-spacing:.04em}
+.pill.copie{background:var(--green-bg);color:var(--green);border:1px solid #1f6b4e}
+.pill.orig{background:var(--archive-bg);color:var(--archive);border:1px solid var(--archive-bd)}
+.cote{font-family:ui-monospace,Menlo,Consolas,monospace;font-weight:700;font-size:.84em;letter-spacing:.3px;background:#0b1530;color:#e5e7eb;padding:1px 8px;border-radius:6px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.rule1907{margin-top:12px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;font-size:.88rem;color:var(--text)}
+.rule1907 b{color:var(--archive)}
+
+/* fonctionnalités */
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.feat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.feat .ic{font-size:1.4rem;display:block;margin-bottom:8px}
+.feat h4{margin:0 0 4px;font-size:.96rem;font-weight:600;color:var(--text)}
+.feat p{margin:0;font-size:.85rem;color:var(--sub)}
+
+/* écrans de l'appli */
+.screens{display:flex;flex-wrap:wrap;gap:10px}
+.screen{display:flex;align-items:center;gap:8px;font-size:.86rem;font-weight:500;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 14px;color:var(--text)}
+
+/* données manipulées */
+.data-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.data-chips span{font-size:.76rem;color:var(--sub);background:#0b1530;border:1px solid var(--line);padding:3px 9px;border-radius:6px}
+
+/* grille équilibrée (techno+données, difficultés+bilan) */
+.grid.even{grid-template-columns:1fr 1fr}
+
+/* difficultés / bilan */
+.check{list-style:none;padding:0;margin:6px 0 0;display:grid;gap:9px}
+.check li{position:relative;padding-left:24px;color:var(--sub);font-size:.92rem}
+.check li::before{content:"✓";position:absolute;left:0;top:0;color:var(--green);font-weight:700}
+.arrow{list-style:none;padding:0;margin:6px 0 0;display:grid;gap:10px}
+.arrow li{color:var(--sub);font-size:.92rem}
+.arrow li b{color:var(--text);font-weight:600}
+.arrow .sol{color:var(--accent);font-weight:600}
+
+/* emphase un peu plus lumineuse dans la section stage */
+#stage p strong{color:var(--text);font-weight:600}
+
+/* révélations au scroll (progressive enhancement : visible sans JS) */
+html.js .reveal{opacity:0;transform:translateY(16px)}
+html.js .reveal.in{opacity:1;transform:none;transition:opacity .6s ease,transform .6s ease}
+
+@media (max-width:900px){
+  .stage-head,.metier .duo,.feature-grid,.grid.even{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+}
+@media (prefers-reduced-motion:reduce){
+  html.js .reveal{opacity:1;transform:none}
+  html.js .reveal.in{transition:none}
+}
+
+/* ---- variantes thème clair pour la section stage ---- */
+html.light{--text:#0f172a;--sub:#475569}
+.light .stat,.light .cote,.light .data-chips span{background:#eff6ff;border-color:#bfdbfe}
+.light .stat .num{color:#0369a1}
+.light .cote{color:#1e3a8a}
+.light .feat,.light .screen,.light .metier .item,.light .rule1907{background:#fff;border-color:#e2e8f0}
+.light .metier,.light .org-tag{background:#fff8ec;border-color:#f0d9b8}
+.light .metier > h3,.light .rule1907 b,.light .org-tag,.light .pill.orig{color:#b45309}
+.light .pill.orig{background:#fff8ec;border-color:#f0d9b8}
+.light .pill.copie{background:#e9f8ef;border-color:#bbe7cd;color:#15803d}
+.light .check li::before{color:#15803d}
+
+/* ============================================================
+   COMPÉTENCES MOBILISÉES — mapping mission → blocs (E5) (ajout)
+   ============================================================ */
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 18px}
+.missions{display:grid;grid-template-columns:1fr;gap:14px}
+.mission{padding:18px 20px;border-left:3px solid var(--accent)}
+.mission-h{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.mission-h .mnum{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.85rem;font-weight:700;color:var(--accent);background:#0b1530;border:1px solid var(--line);border-radius:8px;padding:3px 9px}
+.mission-h h4{margin:0;font-size:1rem;font-weight:600;color:var(--text);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.mwk{font-size:.7rem;font-weight:600;color:var(--sub);background:#0b1530;border:1px solid var(--line);border-radius:999px;padding:2px 9px}
+.bloc-row{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin:0 0 8px}
+.bloc-lab{font-size:.66rem;font-weight:700;letter-spacing:.04em;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.bloc-lab.b1{color:#7dd3fc;background:rgba(14,165,233,.16);border:1px solid #2b6e93}
+.bloc-lab.b2{color:#c4b5fd;background:rgba(139,109,246,.16);border:1px solid #5b4aa0}
+.bloc-lab.b3{color:#fda4af;background:rgba(251,113,133,.14);border:1px solid #9b4856}
+.cchip{font-size:.78rem;font-weight:500;padding:5px 11px;border-radius:8px;line-height:1.2}
+.cchip.b1{color:#bae6fd;background:rgba(14,165,233,.13);border:1px solid #2b6e93}
+.cchip.b2{color:#ddd6fe;background:rgba(139,109,246,.12);border:1px solid #4f4287}
+.cchip.b3{color:#fecdd3;background:rgba(251,113,133,.10);border:1px solid #87404d}
+.mission-why{margin:10px 0 0;font-size:.85rem;color:var(--sub);border-top:1px solid var(--line);padding-top:10px}
+.coverage{margin-top:14px}
+.coverage h4{margin:0 0 12px;font-size:.96rem;color:var(--text)}
+.cov{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.cov li{display:flex;gap:10px;align-items:flex-start;font-size:.9rem;color:var(--text)}
+.cov .st{flex:0 0 auto;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-size:.72rem;font-weight:700;margin-top:1px}
+.cov .st.ok{color:#052e16;background:var(--green)}
+.cov .st.low{color:var(--sub);background:transparent;border:1.5px solid var(--line)}
+.cov em{color:var(--sub);font-style:normal;font-size:.86em}
+
+/* #stage strong : ne pas surcolorer les puces de compétences */
+#stage .cchip strong,#stage .bloc-lab strong{color:inherit}
+
+/* ---- variantes thème clair ---- */
+.light .mission-h .mnum,.light .mwk{background:#eff6ff;border-color:#bfdbfe}
+.light .bloc-lab.b1{color:#0369a1;background:#e0f2fe;border-color:#bae6fd}
+.light .bloc-lab.b2{color:#6d28d9;background:#f3effe;border-color:#ddd6fe}
+.light .bloc-lab.b3{color:#be123c;background:#fff1f3;border-color:#fecdd3}
+.light .cchip.b1{color:#075985;background:#e0f2fe;border-color:#bae6fd}
+.light .cchip.b2{color:#5b21b6;background:#f3effe;border-color:#ddd6fe}
+.light .cchip.b3{color:#9f1239;background:#fff1f3;border-color:#fecdd3}
+.light .cov .st.ok{color:#fff;background:#15803d}
